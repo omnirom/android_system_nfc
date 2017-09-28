@@ -49,7 +49,14 @@ endif
 
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
-LOCAL_MODULE := nfc_nci.$(TARGET_DEVICE)
+
+ifneq ($(BOARD_NFC_HAL_SUFFIX),)
+    HAL_SUFFIX := $(BOARD_NFC_HAL_SUFFIX)
+else
+    HAL_SUFFIX := $(TARGET_DEVICE)
+endif
+
+LOCAL_MODULE := nfc_nci.$(HAL_SUFFIX)
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_SRC_FILES := \
