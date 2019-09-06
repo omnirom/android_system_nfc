@@ -1,6 +1,6 @@
 /******************************************************************************
  *
- *  Copyright (C) 2011-2012 Broadcom Corporation
+ *  Copyright 2019 Google, Inc.
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
@@ -15,16 +15,7 @@
  *  limitations under the License.
  *
  ******************************************************************************/
-/******************************************************************************
- * Decode NFC packets and print them to ADB log.
- * If protocol decoder is not present, then decode packets into hex numbers.
- ******************************************************************************/
 
-#include "data_types.h"
-#include "nfc_types.h"
+#pragma once
 
-#define DISP_NCI ProtoDispAdapterDisplayNciPacket
-void ProtoDispAdapterDisplayNciPacket(uint8_t* nciPacket, uint16_t nciPacketLen,
-                                      bool is_recv);
-void DispLLCP(NFC_HDR* p_buf, bool is_recv);
-void DispHcp(uint8_t* data, uint16_t len, bool is_recv);
+enum ErrorType { UNKNOWN, NCI_TIMEOUT, ERROR_NTF, AID_OVERFLOW };
